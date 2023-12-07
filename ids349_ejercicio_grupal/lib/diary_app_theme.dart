@@ -73,17 +73,17 @@ class DiaryAppTheme{
           fillColor: MaterialStateColor.resolveWith((states) => Colors.black)
       ),
 
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
           foregroundColor: Colors.black,
           backgroundColor: Colors.white
       ),
 
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.black,
         backgroundColor: Colors.white,
       ),
 
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Colors.green
       ),
 
@@ -98,17 +98,17 @@ class DiaryAppTheme{
           fillColor: MaterialStateColor.resolveWith((states) => Colors.white)
       ),
 
-      appBarTheme: AppBarTheme(
+      appBarTheme: const AppBarTheme(
           foregroundColor: Colors.white,
           backgroundColor: Colors.black
       ),
 
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
         backgroundColor: Colors.black,
       ),
 
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           selectedItemColor: Colors.green
       ),
 

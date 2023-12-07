@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ids349l_social_food/author_card.dart';
 import 'card_1.dart';
 import 'card_2.dart';
+import 'card_3.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -18,7 +19,7 @@ class _HomeState extends State<Home> {
   List<Widget> pages = [
     Card1(),
     Card2(),
-    AuthorCard(),
+    Card3(),
   ];
 
   //Metodo para cambiar el indice del tab

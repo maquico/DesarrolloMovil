@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:ids349_ejercicio_grupal/Widget3.dart';
 import 'diary_app_theme.dart';
 import 'meteo_section.dart';
 
 void main() => runApp(DiaryApp());
 
 class DiaryApp extends StatelessWidget {
+
   final title = "My Birthday";
   final text =
       "It's going to be a great birthday. We are going out for dinner at my favorite place, then watch a movie afer we go to the gelateria ofr ice cream and espresso";
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

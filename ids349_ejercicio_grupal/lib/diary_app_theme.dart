@@ -22,9 +22,9 @@ class DiaryAppTheme{
     ),
 
     displaySmall: GoogleFonts.openSans(
-        fontSize: 16.0,
+        fontSize: 14.0,
         fontWeight: FontWeight.w600,
-        color: Colors.black
+        color: Colors.grey
     ),
 
     titleLarge: GoogleFonts.openSans(

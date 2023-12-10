@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ids349_ejercicio_grupal/Widget3.dart';
+import 'package:ids349_ejercicio_grupal/meals_section.dart';
 import 'diary_app_theme.dart';
 import 'meteo_section.dart';
 
@@ -9,7 +9,7 @@ class DiaryApp extends StatelessWidget {
 
   final title = "My Birthday";
   final text =
-      "It's going to be a great birthday. We are going out for dinner at my favorite place, then watch a movie afer we go to the gelateria ofr ice cream and espresso";
+      "It's going to be a great birthday. We are going out for dinner at my favorite place, then watch a movie after we go to the gelateria ofr ice cream and espresso";
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -32,7 +32,7 @@ class DiaryApp extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image.asset("assets/regalos.jpg"),
+                Image.asset("assets/images/regalos.jpg"),
                 SafeArea(
                   child: Padding(
                     padding: const EdgeInsets.only(
@@ -64,8 +64,8 @@ class DiaryApp extends StatelessWidget {
                         ),
                         Padding(
                           padding: const EdgeInsets.all(8.0),
-                          child: Placeholder(),
-                        )
+                          child: MealsSection(),
+                        ),
                       ],
                     ),
                   ),

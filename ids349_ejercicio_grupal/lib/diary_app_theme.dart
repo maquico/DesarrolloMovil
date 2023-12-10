@@ -27,6 +27,11 @@ class DiaryAppTheme{
         color: Colors.grey
     ),
 
+    labelSmall: GoogleFonts.openSans(
+        fontSize: 10.0,
+        color: Colors.black
+    ),
+
     titleLarge: GoogleFonts.openSans(
         fontSize: 20.0,
         fontWeight: FontWeight.w600,
@@ -54,9 +59,15 @@ class DiaryAppTheme{
     ),
 
     displaySmall: GoogleFonts.openSans(
-        fontSize: 16.0,
+        fontSize: 14.0,
         fontWeight: FontWeight.w600,
         color: Colors.white
+    ),
+
+    labelSmall: GoogleFonts.openSans(
+        fontSize: 10.0,
+        fontWeight: FontWeight.w600,
+        color: Colors.black
     ),
 
     titleLarge: GoogleFonts.openSans(

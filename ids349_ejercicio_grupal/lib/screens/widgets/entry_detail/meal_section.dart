@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MealsSection extends StatelessWidget {
+class MealSection extends StatelessWidget {
   final List<String> imagePaths = [
     "assets/images/hamburger.jpeg",
     "assets/images/cake.jpeg",
@@ -15,11 +15,9 @@ class MealsSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.end,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Container(
-          height: 150.0,
-
+          height: 100.0,
           child: Row(
             children: [
               // ListView.builder of circle avatars
@@ -28,9 +26,12 @@ class MealsSection extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: imagePaths.length,
                   itemBuilder: (context, index) {
+                    EdgeInsets padding = EdgeInsets.symmetric(horizontal: 8.0);
+                    if (index == 0) {
+                      padding = EdgeInsets.only(right: 8.0);
+                    }
                     return Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0),
-                      // Adjust the padding as needed
+                      padding: padding,
                       child: CircleAvatar(
                         radius: 42,
                         backgroundImage: AssetImage(imagePaths[index]),
@@ -40,26 +41,23 @@ class MealsSection extends StatelessWidget {
                 ),
               ),
               // SizedBox with Stack of icons
-              Padding(
-                padding: const EdgeInsets.only(left: 24.0),
-                child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        Positioned(
-                          top: 0.0, // Adjust position as needed
-                          child: Icon(Icons.cake),
-                        ),
-                        Positioned(
-                          bottom: 0.0, // Adjust position as needed
-                          child: Icon(Icons.star_border),
-                        ),
-                        Positioned(
-                          bottom: 0.0, // Adjust position as needed
-                          child: Icon(Icons.music_note),
-                        ),
-                      ],
-                    ),
+              SizedBox(
+                width: 60.0,
+                height: 80.0,
+                child: Padding(
+                  padding: EdgeInsets.only(
+                       right: 1.0), // Adjust padding as needed
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      Icon(Icons.cake),
+
+                      Icon(Icons.star_border),
+
+                      Icon(Icons.music_note),
+                    ],
+                  ),
+                ),
               ),
             ],
           ),

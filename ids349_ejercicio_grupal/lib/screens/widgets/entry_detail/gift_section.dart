@@ -18,14 +18,14 @@ class GiftSection extends StatelessWidget {
               'Gift $i',
               style: theme.textTheme.labelSmall,
             ),
-            avatar: Icon(
+            avatar: const Icon(
               Icons.card_giftcard,
               color: Colors.blue,
               size: 20,
             ),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(4.0),
-              side: BorderSide(color: Colors.grey),
+              side: const BorderSide(color: Colors.grey),
             ),
             backgroundColor: Colors.grey.shade100,
           ),

@@ -11,6 +11,8 @@ class MealSection extends StatelessWidget {
     "assets/images/drink.jpeg",
   ];
 
+  MealSection({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,9 +28,9 @@ class MealSection extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: imagePaths.length,
                   itemBuilder: (context, index) {
-                    EdgeInsets padding = EdgeInsets.symmetric(horizontal: 8.0);
+                    EdgeInsets padding = const EdgeInsets.symmetric(horizontal: 8.0);
                     if (index == 0) {
-                      padding = EdgeInsets.only(right: 8.0);
+                      padding = const EdgeInsets.only(right: 8.0);
                     }
                     return Padding(
                       padding: padding,
@@ -41,8 +43,8 @@ class MealSection extends StatelessWidget {
                 ),
               ),
               // SizedBox with Stack of icons
-              SizedBox(
-                width: 60.0,
+              const SizedBox(
+                width: 70.0,
                 height: 80.0,
                 child: Padding(
                   padding: EdgeInsets.only(

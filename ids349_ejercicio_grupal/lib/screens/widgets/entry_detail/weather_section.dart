@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-class MeteoSection extends StatelessWidget {
-  const MeteoSection({super.key});
+class WeatherSection extends StatelessWidget {
+  const WeatherSection({super.key});
 
   @override
   Widget build(BuildContext context) {

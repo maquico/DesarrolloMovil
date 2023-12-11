@@ -57,7 +57,7 @@ class EntryDetail extends StatelessWidget {
                     ),
                     const Padding(
                       padding: EdgeInsets.only(top: 8.0, bottom: 8.0),
-                      child: MeteoSection(),
+                      child: WeatherSection(),
                     ),
                     const Divider(
                       color: Colors.grey,

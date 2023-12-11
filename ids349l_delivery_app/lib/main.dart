@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ids349l_delivery_app/pages/login/login_page.dart';
+import 'package:ids349l_delivery_app/pages/register/register_page.dart';
+
 
 void main() => runApp(MyApp());
 
@@ -19,7 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => LoginPage())
+        GetPage(name: '/', page: () => LoginPage()),
+        GetPage(name: '/register', page: () => RegisterPage()),
       ],//Si usamos este attrb no se puede tener home
     );
   }

@@ -18,7 +18,7 @@ class LoginController extends GetxController{
     String password = passwordController.text.trim();
 
     if(validForm(email, password)){
-      print("Formulario listo para hacer la peticion HTTP");
+      print("Formulario de login listo para hacer la peticion HTTP");
     }
   }
 

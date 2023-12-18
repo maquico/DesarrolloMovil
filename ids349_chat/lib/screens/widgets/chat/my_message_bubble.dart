@@ -2,13 +2,17 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../entities/message.dart';
+
 class MyMessageBubble extends StatelessWidget {
-  const MyMessageBubble({super.key});
+  final Message message;
+  const MyMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
     //El tema toma el theme que tenga el padre (se le pasa por el context), si no hay toma el default
     final colors = Theme.of(context).colorScheme;
+    //Crear un objeto de tipo Provider
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
@@ -19,7 +23,7 @@ class MyMessageBubble extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-              child: Text("Mensaje a mi amor",
+              child: Text(message.text,
               style: TextStyle(
                 color: Colors.white,
               ),

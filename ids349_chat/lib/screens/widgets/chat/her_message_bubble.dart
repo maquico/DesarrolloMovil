@@ -2,8 +2,11 @@
 
 import 'package:flutter/material.dart';
 
+import '../../../entities/message.dart';
+
 class HerMessageBubble extends StatelessWidget {
-  const HerMessageBubble({super.key});
+  final Message message;
+  const HerMessageBubble({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,8 @@ class HerMessageBubble extends StatelessWidget {
               ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-                child: Text("Mensaje a mi amor",
+                child: Text(
+                  message.text,
                   style: TextStyle(
                     color: Colors.white,
                   ),

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "876872684399",
+    "project_id": "multi-store-app-af194",
+    "storage_bucket": "multi-store-app-af194.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:876872684399:android:b82eb29c6de3dc0bf28e9a",
+        "android_client_info": {
+          "package_name": "com.anmoreno.multi_store_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcjFN-AhFeDWcgqRKFmmZllrH5xGtIujo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

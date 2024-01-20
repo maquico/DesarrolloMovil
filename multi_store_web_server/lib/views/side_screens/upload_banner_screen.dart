@@ -64,55 +64,62 @@ class _UploadBannerScreenState extends State<UploadBannerScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            alignment: Alignment.topLeft,
-            padding: const EdgeInsets.all(10),
-            child: const Text(
-              'Upload Banner',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 36,
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              alignment: Alignment.topLeft,
+              padding: const EdgeInsets.all(10),
+              child: const Text(
+                'Upload Banner',
+                style: TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 36,
+                ),
               ),
             ),
-          ),
-          Divider(
-            color: Colors.grey,
-          ),
+            Divider(
+              color: Colors.grey,
+            ),
 
-          Row(
-            children: [
-              Container(
-                width: 140,
-                height: 140,
-                decoration: BoxDecoration(
-                  color: Colors.grey.shade500,
-                  borderRadius:  BorderRadius.circular(10)
+            Row(
+              children: [
+                Container(
+                  width: 140,
+                  height: 140,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade500,
+                    borderRadius:  BorderRadius.circular(10)
+                  ),
+                  child: Center(
+                      child: _image != null ? Image.memory(_image, fit: BoxFit.cover,) : Text('Upload Banner')),
                 ),
-                child: Center(
-                    child: _image != null ? Image.memory(_image, fit: BoxFit.cover,) : Text('Upload Banner')),
-              ),
-              ElevatedButton(
+                SizedBox(
+                  width: 30,
+                ),
+                ElevatedButton(
                   onPressed: (){
-                    pickImage();
+                    _uploadToFirestore();
                   },
-                  child: Text("Upload Banner"),
-              )
-            ],
+                  child: Text("Save Banner"),
+                )
+              ],
 
-          ),
-          SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-            onPressed: (){
-              _uploadToFirestore();
-            },
-            child: Text("Save Banner"),
-          )
-        ],
+            ),
+            SizedBox(
+              height: 30,
+            ),
+            ElevatedButton(
+              onPressed: (){
+                pickImage();
+              },
+              child: Text("Select Banner"),
+            )
+
+          ],
+        ),
       ),
     );
   }

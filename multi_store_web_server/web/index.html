@@ -40,20 +40,49 @@
   <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script>
-    window.addEventListener('load', function(ev) {
+<script>
+    window.addEventListener('load', function (ev) {
+      // var loading = document.querySelector('#loading');
+      // loading.textContent = "Loading entrypoint...";
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
+        onEntrypointLoaded: async function (engineInitializer) {
+          let appRunner = await engineInitializer.initializeEngine({
+            hostElement: document.querySelector("#flutter_app"),
+            renderer: "html"
+          }).then(function (appRunner) {
+            return appRunner.runApp();
           });
         }
-      });
+      })
     });
   </script>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase_storage.js"></script>
+  <script src="main.dart.js" type="application/javascript"></script>
+  <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyDj5uXjETuuv9EpIZn2VPcX2j2J4ptiZBs",
+    authDomain: "multi-store-app-af194.firebaseapp.com",
+    projectId: "multi-store-app-af194",
+    storageBucket: "multi-store-app-af194.appspot.com",
+    messagingSenderId: "876872684399",
+    appId: "1:876872684399:web:58a64471ba059fa5f28e9a"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+</script>
 </body>
 </html>

@@ -3,6 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
+import 'package:multi_store_web_server/views/side_screens/widgets/category_widget.dart';
 
 class CategoryScreen extends StatefulWidget {
   CategoryScreen({super.key});
@@ -15,10 +16,12 @@ class CategoryScreen extends StatefulWidget {
 
 class _CategoryScreenState extends State<CategoryScreen> {
 
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final FirebaseStorage _firebaseStorage = FirebaseStorage.instance;
   final FirebaseFirestore _firebaseFirestore = FirebaseFirestore.instance;
   dynamic _image;
   String? _fileName;
+  late String _categoryName;
 
   pickImage() async{
     FilePickerResult? result = await FilePicker.platform.pickFiles(
@@ -34,7 +37,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
     }
   }
 
-  _uploadToFirebaseStorage(dynamic image) async{
+  _uploadCategoryImageToFirebaseStorage(dynamic image) async{
     // null check with !
     var ref = _firebaseStorage.ref().child('Category').child(_fileName!);
 
@@ -44,13 +47,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
     return downloadURL;
   }
 
-  _uploadToFirestore() async{
+  _uploadCategoryImageToFirestore() async{
     EasyLoading.show();
-    if(_image != null){
-      var imageURL = await _uploadToFirebaseStorage(_image);
+    if(_formKey.currentState!.validate()){
+      var imageURL = await _uploadCategoryImageToFirebaseStorage(_image);
+
       await _firebaseFirestore.collection("Category").doc(_fileName).set(
           {
             'image': imageURL,
+            'categories': _categoryName
           }
       ).whenComplete(() {
         EasyLoading.dismiss();
@@ -59,60 +64,94 @@ class _CategoryScreenState extends State<CategoryScreen> {
         });
       });
     }
-  }
+    else{
+    }
+    }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            alignment: Alignment.topLeft,
-            padding: const EdgeInsets.all(10),
-            child: const Text(
-              'Upload Category',
-              style: TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 36,
-              ),
-            ),
-          ),
-          Divider(
-            color: Colors.grey,
-          ),
-
-          Row(
+      child: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                width: 140,
-                height: 140,
-                decoration: BoxDecoration(
-                    color: Colors.grey.shade500,
-                    borderRadius:  BorderRadius.circular(10)
+                alignment: Alignment.topLeft,
+                padding: const EdgeInsets.all(10),
+                child: const Text(
+                  'Category Management',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w700,
+                    fontSize: 36,
+                  ),
                 ),
-                child: Center(
-                    child: _image != null ? Image.memory(_image, fit: BoxFit.cover,) : Text('Upload Category')),
+              ),
+              Divider(
+                color: Colors.grey,
+              ),
+
+              Row(
+                children: [
+                  Container(
+                    width: 140,
+                    height: 140,
+                    decoration: BoxDecoration(
+                        color: Colors.grey.shade500,
+                        borderRadius:  BorderRadius.circular(10)
+                    ),
+                    child: Center(
+                        child: _image != null ? Image.memory(_image, fit: BoxFit.cover,) : Text('Upload Image')),
+                  ),
+                  SizedBox(
+                    width: 30,
+                  ),
+                  Flexible(
+                    child: TextFormField(
+                      decoration: InputDecoration(
+                          labelText: 'Category Name',
+                          hintText: 'Enter Category Name'
+                      ),
+                      onChanged: (value) {
+                        _categoryName = value;
+                      },
+                      validator: (value) {
+                        if(value!.isEmpty){
+                          return 'Please the category name must not be empty';
+                        }
+                        else{
+                          return null;
+                        }
+                      },
+                    ),
+                  ),
+
+                  ElevatedButton(
+                    onPressed: (){
+                      _uploadCategoryImageToFirestore();
+                    },
+                    child: Text("Save Category"),
+                  )
+                ],
+              ),
+              SizedBox(
+                height: 30,
               ),
               ElevatedButton(
                 onPressed: (){
                   pickImage();
                 },
-                child: Text("Upload Category"),
-              )
+                child: Text("Select Category Image"),
+              ),
+              Divider(
+                color: Colors.grey,
+              ),
+              CategoryWidget()
             ],
-
           ),
-          SizedBox(
-            height: 30,
-          ),
-          ElevatedButton(
-            onPressed: (){
-              _uploadToFirestore();
-            },
-            child: Text("Save Category"),
-          )
-        ],
+        ),
       ),
     );
   }
